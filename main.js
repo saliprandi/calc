@@ -4,12 +4,27 @@ const sound = document.getElementById("sound");
 const buttons = Array.from(document.querySelectorAll(".btn"));
 const display = document.getElementById("lcd");
 
-buttons.forEach((btn) =>
-  btn.addEventListener("touchstart", (e) => keyPress(e.target.innerText))
-);
+buttons.forEach((btn) => {
+  btn.addEventListener(
+    "mouseup",
+    (e) => {
+      keyPress(e.target.innerText);
+      e.preventDefault();
+    },
+    false
+  );
+  btn.addEventListener(
+    "touchend",
+    (e) => {
+      keyPress(e.target.innerText);
+      e.preventDefault();
+    },
+    false
+  );
+});
 
 function keyPress(value) {
-  //   if (value === "×") value = "*";
+  console.log(value);
   if (value === "AC" || value === "C") value = display.innerText = "";
   if (value === "=") {
     let lcd = display.innerText;
@@ -17,7 +32,6 @@ function keyPress(value) {
     display.innerText = eval(lcd);
     return;
   }
-
   show = display.innerHTML + value;
   show = show.replace("hola amigo", "");
   display.innerText = show;
@@ -27,7 +41,6 @@ function keyPress(value) {
 // Detectar teclas
 document.onkeydown = function (e) {
   e = e || window.event;
-  console.log(e.key);
   let value = e.key;
   if (value === "Enter") keyPress("=");
   if (value === "*") keyPress("×");
