@@ -13,7 +13,7 @@ function keyPress(value) {
   if (value === "AC" || value === "C") value = display.innerText = "";
   if (value === "=") {
     let lcd = display.innerText;
-    lcd = lcd.replaceAll("×", "*").replaceAll("÷", "/");
+    lcd = lcd.replace(/×/g, "*").replace(/÷/g, "/");
     display.innerText = eval(lcd);
     return;
   }
