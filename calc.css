@@ -31,7 +31,7 @@ body {
 
 main {
   margin: 0 auto;
-  width: 350px;
+  width: 370px;
   max-width: 100vw;
   background-color: var(--color1);
   padding: 2em 1em;
@@ -90,6 +90,7 @@ main > section {
 }
 .btn {
   all: unset;
+  cursor: pointer;
   border: 1px solid black;
   border-radius: 16px;
   width: 100%;
@@ -106,8 +107,10 @@ main > section {
   user-select: none;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:active {
   box-shadow: 0 0 3px 1px black, inset 0 0 1px 1px white;
+  transform: translateY(1px);
 }
 .btn:nth-child(20) {
   grid-row: span 2;
