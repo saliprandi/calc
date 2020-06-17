@@ -4,6 +4,7 @@ const sound = document.getElementById("sound");
 const buttons = Array.from(document.querySelectorAll(".btn"));
 const display = document.getElementById("lcd");
 
+// detecta cuando se apreta un botón
 buttons.forEach((btn) => {
   btn.addEventListener(
     "mouseup",
@@ -23,8 +24,22 @@ buttons.forEach((btn) => {
   );
 });
 
+// realiza una acción cuando se apreta un botón
 function keyPress(value) {
   console.log(value);
+  if (value === "▸") {
+    display.innerText = display.innerText.slice(0, -1);
+    return;
+  }
+  if (value === "±") {
+    let lcd = display.innerText;
+    if (lcd.slice(0, 1) === "-") lcd = lcd.slice(1);
+    else lcd = "-" + lcd;
+    display.innerText = lcd;
+    return;
+  }
+
+  if (value === "·") value = ".";
   if (value === "AC" || value === "C") value = display.innerText = "";
   if (value === "=") {
     let lcd = display.innerText;
@@ -33,7 +48,7 @@ function keyPress(value) {
     return;
   }
   show = display.innerHTML + value;
-  show = show.replace("hola amigo", "");
+  show = show.replace("¡hola!", "");
   display.innerText = show;
   display.scrollLeft = 1000000;
 }
