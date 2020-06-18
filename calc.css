@@ -57,6 +57,9 @@ main > section {
   font-size: 30px;
   font-weight: 700;
 }
+.left img {
+  width: 110px;
+}
 .right {
   font-size: 13px;
   place-content: initial;

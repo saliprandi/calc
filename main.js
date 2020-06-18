@@ -27,6 +27,7 @@ buttons.forEach((btn) => {
 // realiza una acción cuando se apreta un botón
 function keyPress(value) {
   console.log(value);
+
   if (value === "▸") {
     display.innerText = display.innerText.slice(0, -1);
     return;
@@ -44,6 +45,10 @@ function keyPress(value) {
   if (value === "=") {
     let lcd = display.innerText;
     lcd = lcd.replace(/×/g, "*").replace(/÷/g, "/");
+    if (lcd.indexOf("√") > -1) {
+      lcd = lcd.replace("√", "Math.sqrt(") + ")";
+    }
+    console.log(lcd);
     display.innerText = eval(lcd);
     return;
   }
