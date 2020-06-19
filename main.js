@@ -1,6 +1,5 @@
 console.log("La calculadora de Santi");
 
-const sound = document.getElementById("sound");
 const buttons = Array.from(document.querySelectorAll(".btn"));
 const display = document.getElementById("lcd");
 
@@ -49,7 +48,8 @@ function keyPress(value) {
       lcd = lcd.replace("√", "Math.sqrt(") + ")";
     }
     console.log(lcd);
-    display.innerText = eval(lcd);
+    lcd = parseFloat(eval(lcd)).toFixed(3);
+    display.innerText = lcd;
     return;
   }
   show = display.innerHTML + value;
