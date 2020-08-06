@@ -48,12 +48,12 @@ function keyPress(value) {
       lcd = lcd.replace("√", "Math.sqrt(") + ")";
     }
     console.log(lcd);
-    lcd = parseFloat(eval(lcd)).toFixed(3);
+    lcd = parseFloat(eval(lcd)); //.toFixed(3);
     display.innerText = lcd;
     return;
   }
   show = display.innerHTML + value;
-  show = show.replace("¡hola!", "");
+  // show = show.replace("¡hola!", "");
   display.innerText = show;
   display.scrollLeft = 1000000;
 }
